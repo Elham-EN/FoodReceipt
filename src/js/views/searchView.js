@@ -52,6 +52,39 @@ const renderRecipe = (recipe) => {
     elements.searchResList.insertAdjacentHTML('beforeend', markup)
 }
 
-export const renderResults = (recipes) => { /*[{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, ...]*/
-    recipes.forEach(renderRecipe) //loop all recipes and call renderRecipe for each of them
+//page = the number of page we are in & type = 'prev' or 'next'
+const createButton = (page, type) => `
+    <button class="btn-inline results__btn--${type}" data-goto=${type === 'prev' ? page - 1 : page + 1} >
+        <svg class="search__icon">
+            <use href="img/icons.svg#icon-triangle-${type === 'prev' ? 'left' : 'right'}"></use>
+        </svg>
+        <span>Page ${type === 'prev' ? page - 1 : page + 1}</span>
+    </button> `;
+
+//render the buttons according to the number of the page we are on
+const renderButtons = (page, numResults, resPerPage) => {
+    //how many pages there are ? Math.ceil() -> 40/10 give 4.5 & math function make it 5
+    const pages = Math.ceil(numResults / resPerPage) //e,g 30 recepie results and 10 resPerPage give 3 pages
+    //Need to know on which page we are
+    // if we are on page one and if there is only one page of result then dont display button at all
+    if (page === 1 && pages > 1) { 
+        //only button to go to the next page
+    } 
+    //in the middle pages e.g if page 2 less 3 pages of result
+    else if (page < pages) {  
+        //show both buttons
+    }
+    //if we are on last page & if on last page then we want the prev button
+    else if (page === pages && pages > 1) {
+        //only button to go to prev page
+    }
+}
+
+/* recipes parameter contains each receipe object in the array [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, ...]*/
+export const renderResults = (recipes, page = 1, resPerPage = 10) => { 
+    /*Example: let say page = 1 & resPerPage = 5, then the start varaible will have ((1-1 = 0) * 5 = 0 and 
+    the start index is 0 and end will be 1 * 5 = 5 and slice until index 4 because array index start from zero)*/
+    const start = (page - 1) * resPerPage //start at the specific index of array object
+    const end = page * resPerPage 
+    recipes.slice(start, end).forEach(renderRecipe) //loop all recipes and call renderRecipe for each of them
 }

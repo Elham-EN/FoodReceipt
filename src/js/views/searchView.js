@@ -81,7 +81,7 @@ const renderButtons = (page, numResults, resPerPage) => {
 }
 
 /* recipes parameter contains each receipe object in the array [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, ...]*/
-export const renderResults = (recipes, page = 1, resPerPage = 10) => { 
+export const renderResults = (recipes, page = 1, resPerPage = 8) => { 
     /*Example: let say page = 1 & resPerPage = 5, then the start varaible will have ((1-1 = 0) * 5 = 0 and 
     the start index is 0 and end will be 1 * 5 = 5 and slice until index 4 because array index start from zero)*/
     const start = (page - 1) * resPerPage //start at the specific index of array object

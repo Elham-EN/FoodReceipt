@@ -26,6 +26,9 @@
   "dependencies": {
     "axios": "^0.21.0",
     "babel-polyfill": "^6.26.0",
-    "fractional": "^1.0.0"
+    "fractional": "^1.0.0",
+    "nanoid": "^3.1.18",
+    "nanoid-dictionary": "^4.1.0",
+    "uniqid": "^5.2.0"
   }
 }

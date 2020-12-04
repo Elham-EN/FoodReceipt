@@ -17,7 +17,7 @@ export const highlightSelected = (id) => {
     resultsArray.forEach((currEl) => {
         currEl.classList.remove('results__link--active')
     })
-    document.querySelector(`a[href="#${id}"]`).classList.add('results__link--active')
+    document.querySelector(`.results__link[href="#${id}"]`).classList.add('results__link--active')
 }
 
 /** 'Pasta with tomato and spinach'
@@ -27,7 +27,7 @@ export const highlightSelected = (id) => {
  * acc: 15 | acc + cur.length = 18(15+3) | newTitle = ['Pasta', 'with', 'tomato']
  * acc: 18 | acc + cur.length = 25(18+7) | newTitle = ['Pasta', 'with', 'tomato']
  */
-const limitRecipeTitle = (title, limit = 17) => {
+export const limitRecipeTitle = (title, limit = 17) => {
     const newTitle = []
     if (title.length > limit) {
         title.split(' ').reduce( (acc, cur) => {  //split space with comma between word & turn into array
@@ -40,7 +40,7 @@ const limitRecipeTitle = (title, limit = 17) => {
         return `${newTitle.join(' ')} ...` //oppsite of split - turn into string
     }// end of if statement
     return title //return if the title is less then or equal 17
- }
+}
 
 //Render one single recipe 
 const renderRecipe = (recipe) => {
